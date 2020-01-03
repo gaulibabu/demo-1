@@ -1,8 +1,9 @@
 package com.example.demo.configuration;
 
-import javax.activation.DataSource;
+//import javax.activation.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,7 +14,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+//import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+//import javax.sql.DataSource;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import javax.sql.DataSource;
 
 
 @Configuration
@@ -24,6 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
  private BCryptPasswordEncoder bCryptPasswordEncoder;
  
  @Autowired
+ @Qualifier("dataSource")
  private DataSource dataSource;
  
  private final String USERS_QUERY = "select email, password, active from user where email=?";
