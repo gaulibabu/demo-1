@@ -76,4 +76,7 @@ public class UserController {
   model.setViewName("errors/access_denied");
   return model;
  }
+ public String hello() {
+	 return "Hello som";
+ }
 }
